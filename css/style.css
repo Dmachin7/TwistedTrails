@@ -7,7 +7,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url(Images/gif.gif);
+    background-image: url(../Images/gif.gif);
     background-size: cover;
 
 }
