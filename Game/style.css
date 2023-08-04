@@ -1,0 +1,108 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url(Images/gif.gif);
+    background-size: cover;
+
+}
+.setup-container,
+.game-container,
+.start-game-container {
+    outline: solid 2px black;
+    background-color: rgba(255, 255, 255, .7);
+    padding: 5rem;
+    box-shadow: 0 0 10px black;
+    border-radius: 5%;
+}
+.game-container {
+    grid-template-columns: repeat(10, 40px);
+    grid-template-columns: repeat(10, 40px);
+}
+.game-container h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.game-container h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.setup-container h1 {
+    padding: 0;
+    margin-top: 0;
+}
+#startButton {
+    text-decoration: none;
+    position: relative;
+    left: 30%;
+    background-color: darkgreen;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 25px;
+}
+#startButton:hover {
+    box-shadow: 0 0 10px black;
+}
+#startButtonfr {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 39%;
+    background-color: darkgreen;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    margin: 10px;
+}
+#howToButton1 {
+    text-decoration: none;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    outline: black solid 1px;
+    margin: 5px;
+    color: black;
+}
+#howToButton {
+    text-decoration: none;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkgreen;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 25px;
+}
+#howToButton:hover {
+    box-shadow: 0 0 10px black;
+}
+#start-game {
+    text-decoration: none;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    outline: black solid 1px;
+    margin: 5px;
+}
+#player2name,
+#player1name {
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    margin: 0 auto;
+    font-size: 20px;
+}
