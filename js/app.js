@@ -1,7 +1,7 @@
 // grab the startGame button
 const startButton = document.querySelector('#startButton')
-
 const startButtonfr = document.querySelector('#startButtonfr')
+
 // Create class for players
 class Player {
     constructor(name) {
@@ -16,14 +16,13 @@ class Player {
 }
 
 
-//grab the container div
-const setupContainer = document.querySelector(".setup-container")
+//grab some statsContainer divs
+const statsContainer = document.querySelector("#PlayerNames")
+const statsTitle = document.querySelector('#statsTitle')
 
-const confirmPlayers = () => {
-    setupContainer.innerHTML = " "
-    const playerStatsTitle = document.createElement('h1')
-    playerStatsTitle.innerHTML = "Player Stats"
-}
+// create blank variables
+let newPlayer
+let newPlayer2
 
 // function to create new player's using user input
 const createPlayer = () => {
@@ -36,9 +35,10 @@ const createPlayer = () => {
         alert("Please enter a valid player name")
         return
     }
-    const newPlayer = new Player(`${player1Name}`)
-    const newPlayer2 = new Player(`${player2Name}`)
-   
+    newPlayer = new Player(`${player1Name}`)
+    newPlayer2 = new Player(`${player2Name}`)
+
+    console.log(`${newPlayer.name}`)
 }
 
 //event listener for start button

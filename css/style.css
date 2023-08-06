@@ -11,6 +11,7 @@ body {
     background-size: cover;
 
 }
+.player-stats-container,
 .setup-container,
 .game-container,
 .start-game-container {
@@ -20,6 +21,7 @@ body {
     box-shadow: 0 0 10px black;
     border-radius: 5%;
 }
+#PlayerNames,
 .game-container {
     grid-template-columns: repeat(10, 40px);
     grid-template-columns: repeat(10, 40px);
@@ -46,10 +48,23 @@ body {
     color: white;
     border-radius: 5px;
     padding: 10px 20px;
-    font-size: 25px;
+    font-size: 30px;
 }
 #startButton:hover {
     box-shadow: 0 0 10px black;
+}
+#goBackButton {
+    text-decoration: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: darkgreen;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 #startButtonfr {
     text-decoration: none;
@@ -105,4 +120,9 @@ body {
     align-items: flex-start;
     margin: 0 auto;
     font-size: 20px;
+}
+.maze-container {
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+    grid-template-rows: repeat(5, 50px);
 }
