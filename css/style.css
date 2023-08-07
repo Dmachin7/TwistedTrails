@@ -11,7 +11,7 @@ body {
     background-size: cover;
 
 }
-.player-stats-container,
+
 .setup-container,
 .game-container,
 .start-game-container {
@@ -66,6 +66,7 @@ body {
     margin-top: 5px;
     margin-left: 5px;
 }
+.StartNow,
 #startButtonfr {
     text-decoration: none;
     display: flex;
@@ -123,6 +124,17 @@ body {
 }
 .maze-container {
     display: grid;
-    grid-template-columns: repeat(5, 50px);
-    grid-template-rows: repeat(5, 50px);
+    grid-template-columns: repeat(7, 100px);
+    grid-template-rows: repeat(5, 100px);
+    outline: solid 2px black;
+    background-color: white;
+    box-shadow: 0 0 10px black;
+    border-radius: 5%;
+    margin-top: 10px;
+    width: 700px;
+    height: 500px;
+}
+.makeMaze{
+    border-right: black 1px solid;
+    border-bottom: black 1px solid;
 }

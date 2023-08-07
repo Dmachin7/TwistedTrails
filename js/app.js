@@ -39,7 +39,21 @@ const createPlayer = () => {
     newPlayer2 = new Player(`${player2Name}`)
 
     console.log(`${newPlayer.name}`)
+
+    window.location.href = "maze.html" // this takes the user to the maze screen after the function goes through
 }
 
 //event listener for start button
-startButtonfr.addEventListener("click", createPlayer)
+// startButtonfr.addEventListener("click", createPlayer)
+
+const startNow = document.querySelector('.StartNow')
+
+const createMaze = () => {
+   for(let i = 0; i < 63; i++) {
+    const newLine = document.createElement('div')
+    newLine.classList.add('makeMaze')
+    const mazeDiv = document.querySelector('.maze-container')
+    mazeDiv.appendChild(newLine)
+}
+}
+createMaze()
