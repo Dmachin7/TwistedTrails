@@ -1,7 +1,7 @@
 // grab the startGame button
 const startButton = document.querySelector('#startButton')
 const startButtonfr = document.querySelector('#startButtonfr')
-
+const generateMaze = document.querySelector('#generateMaze')
 // Create class for players
 class Player {
     constructor(name) {
@@ -25,7 +25,35 @@ let newPlayer
 let newPlayer2
 
 // function to create new player's using user input
-const createPlayer = () => {
+// const startGame = () => {
+//     const player1input = document.querySelector("#player1name")
+//     const player1Name = player1input.value
+//     const player2input = document.querySelector('#player2name')
+//     const player2Name = player2input.value
+    
+//     if(player1Name === "" || player2Name === "") {
+//         alert("Please enter a valid player name")
+//         return
+//     }
+//     newPlayer = new Player(`${player1Name}`)
+//     newPlayer2 = new Player(`${player2Name}`)
+
+//     console.log(`${newPlayer.name}`)
+
+// }
+
+
+const createMaze = () => {
+   for(let i = 0; i < 63; i++) {
+    const newLine = document.createElement('div')
+    newLine.classList.add('makeMaze')
+    const mazeDiv = document.querySelector('.maze-container')
+    mazeDiv.appendChild(newLine)
+}
+}
+
+const startGame = () => {
+
     const player1input = document.querySelector("#player1name")
     const player1Name = player1input.value
     const player2input = document.querySelector('#player2name')
@@ -38,22 +66,11 @@ const createPlayer = () => {
     newPlayer = new Player(`${player1Name}`)
     newPlayer2 = new Player(`${player2Name}`)
 
-    console.log(`${newPlayer.name}`)
+    console.log(`Player 1's name is ${newPlayer.name}`)
+    console.log(`Player 2's name is ${player2Name}`)
 
-    window.location.href = "maze.html" // this takes the user to the maze screen after the function goes through
+
 }
 
-//event listener for start button
-// startButtonfr.addEventListener("click", createPlayer)
-
-const startNow = document.querySelector('.StartNow')
-
-const createMaze = () => {
-   for(let i = 0; i < 63; i++) {
-    const newLine = document.createElement('div')
-    newLine.classList.add('makeMaze')
-    const mazeDiv = document.querySelector('.maze-container')
-    mazeDiv.appendChild(newLine)
-}
-}
-createMaze()
+// startButtonfr.addEventListener("click", startGame)
+generateMaze.addEventListener("click", createMaze)

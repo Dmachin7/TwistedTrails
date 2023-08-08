@@ -66,6 +66,7 @@ body {
     margin-top: 5px;
     margin-left: 5px;
 }
+#generateMaze,
 .StartNow,
 #startButtonfr {
     text-decoration: none;
