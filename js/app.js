@@ -22,24 +22,24 @@ const createMaze = () => {
     const imageData = pen.getImageData(0, 0, mazeImage.width, mazeImage.height)
 
     // used to calculate the pixelSize compared to the canvas and the image size. Which allows the drawing to fit the canvas good
-    const pixelSizeX = Math.floor(maze.width / mazeImage.width);
-    const pixelSizeY = Math.floor(maze.height / mazeImage.height);
+    const pixelSizeX = Math.floor(maze.width / mazeImage.width)
+    const pixelSizeY = Math.floor(maze.height / mazeImage.height)
 
     // for loop to iterate over each pixel in the image and grab its RGBA values
     // the first loop is for each row or vertical pixels
 for (let y = 0; y < mazeImage.height; y++) {
     // loop to go over every column for pixels
     for (let x = 0; x < mazeImage.width; x++) {
-        const index = (y * mazeImage.width + x) * 4;
-        const r = imageData.data[index];
-        const g = imageData.data[index + 1];
-        const b = imageData.data[index + 2];
-        const a = imageData.data[index + 3];
+        const index = (y * mazeImage.width + x) * 4
+        const r = imageData.data[index]
+        const g = imageData.data[index + 1]
+        const b = imageData.data[index + 2]
+        const a = imageData.data[index + 3]
     
         // sets the "fill style" to match the value grabbed from the for loop above
-        pen.fillStyle = `rgba(${r},${g},${b},${a / 255})`;
+        pen.fillStyle = `rgba(${r},${g},${b},${255})`
         // this draws a rectangle for each pixel
-        pen.fillRect(x * pixelSizeX, y * pixelSizeY, pixelSizeX, pixelSizeY);
+        pen.fillRect(x * pixelSizeX, y * pixelSizeY, pixelSizeX, pixelSizeY)
     }
     // make the generateMaze button dissapear when clicked
 generateMaze.setAttribute("style","display:none;")
