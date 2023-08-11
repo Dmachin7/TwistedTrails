@@ -55,12 +55,12 @@ const generatePlayer = () => {
     x: 0,
     y: 626,
     size: 45,
-    speed: 5
+    speed: 20
  }
 
 //load the players image
 const playerImage = new Image()
-playerImage.src = '../Images/ashWalking.jpeg'
+playerImage.src = '../Images/ashWalking.png'
 
  function movePlayer(dx, dy) {
     const nextX = player.x + dx
@@ -81,7 +81,7 @@ playerImage.src = '../Images/ashWalking.jpeg'
     drawPlayer()
  }
  
- drawPlayer()
+
  document.addEventListener('keydown', (e) => {
     if (e.key === 'w') {
         movePlayer(0, -player.speed);
