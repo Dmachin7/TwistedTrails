@@ -8,7 +8,7 @@ const generateMaze = document.querySelector('#generateMaze')
   // grab maze canvas element
   const maze = document.querySelector('#maze')
   // canvas getcontext command
-  const pen = maze.getContext('2d')
+  const pen = maze.getContext('2d', {willReadFrequently: true })
 
 /**
  * This function is what generates the maze
@@ -46,7 +46,66 @@ generateMaze.setAttribute("style","display:none;")
 }
 }
 
-generateMaze.addEventListener("click", createMaze)
+
+/**
+ * This function will create the player
+ */
+const generatePlayer = () => {
+ const player = {
+    x: 0,
+    y: 626,
+    size: 45,
+    speed: 5
+ }
+
+//load the players image
+const playerImage = new Image()
+playerImage.src = '../Images/ashWalking.jpeg'
+
+ function movePlayer(dx, dy) {
+    const nextX = player.x + dx
+    const nextY = player.y + dy
+
+    // Check if the next position is within the canvas boundaries
+    if (nextX >= 0 && nextX <= maze.width - player.size &&
+        nextY >= 0 && nextY <= maze.height - player.size) {
+        player.x = nextX
+        player.y = nextY
+    }
+ }
+ function drawPlayer() {
+    pen.drawImage(playerImage,player.x, player.y, player.size, player.size)
+ }
+
+ playerImage.onload = () => {
+    drawPlayer()
+ }
+ 
+ drawPlayer()
+ document.addEventListener('keydown', (e) => {
+    if (e.key === 'w') {
+        movePlayer(0, -player.speed);
+    } else if (e.key === 's') {
+        movePlayer(0, player.speed);
+    } else if (e.key === 'a') {
+        movePlayer(-player.speed, 0);
+    } else if (e.key === 'd') {
+        movePlayer(player.speed, 0);
+    }
+
+    // Clear the canvas and redraw the maze and player
+    pen.clearRect(0, 0, maze.width, maze.height);
+    createMaze();
+    drawPlayer();
+})
+}
+
+function playGame() {
+    createMaze()
+    generatePlayer()
+}
+
+generateMaze.addEventListener("click", playGame)
 
 
 
