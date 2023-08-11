@@ -35,12 +35,18 @@ for (let y = 0; y < mazeImage.height; y++) {
         const g = imageData.data[index + 1]
         const b = imageData.data[index + 2]
         const a = imageData.data[index + 3]
-    
+
         // sets the "fill style" to match the value grabbed from the for loop above
         pen.fillStyle = `rgba(${r},${g},${b},${255})`
         // this draws a rectangle for each pixel
         pen.fillRect(x * pixelSizeX, y * pixelSizeY, pixelSizeX, pixelSizeY)
     }
+
+    /**
+ * background-color: rgba(241, 246, 239, 255); //white
+    background-color: rgba(0, 0, 0, 255) //black
+ */
+
     // make the generateMaze button dissapear when clicked
 generateMaze.setAttribute("style","display:none;")
 }
@@ -53,10 +59,21 @@ generateMaze.setAttribute("style","display:none;")
 const generatePlayer = () => {
  const player = {
     x: 0,
-    y: 626,
-    size: 45,
-    speed: 20
+    y: 630,
+    size: 32,
+    speed: 10,
+    hasKey: false
  }
+
+ // x: 1040, y: 150 is the winning position
+
+
+// 
+
+    /**
+ * background-color: rgba(241, 246, 239, 255); //white
+    background-color: rgba(0, 0, 0, 255) //black
+ */
 
 //load the players image
 const playerImage = new Image()
@@ -73,10 +90,10 @@ playerImage.src = '../Images/ashWalking.png'
         player.y = nextY
     }
  }
+
  function drawPlayer() {
     pen.drawImage(playerImage,player.x, player.y, player.size, player.size)
  }
-
  playerImage.onload = () => {
     drawPlayer()
  }
@@ -89,16 +106,19 @@ playerImage.src = '../Images/ashWalking.png'
         movePlayer(0, player.speed);
     } else if (e.key === 'a') {
         movePlayer(-player.speed, 0);
-    } else if (e.key === 'd') {
+    } else if (e.key === 'd' ) {
         movePlayer(player.speed, 0);
     }
-
     // Clear the canvas and redraw the maze and player
     pen.clearRect(0, 0, maze.width, maze.height);
     createMaze();
     drawPlayer();
-})
-}
+    
+    if(player.x === 1040 && player.y === 150) {
+        alert("Nice job you won the game!")
+    }
+})}
+
 
 function playGame() {
     createMaze()
@@ -108,14 +128,12 @@ function playGame() {
 generateMaze.addEventListener("click", playGame)
 
 
-
-
-
-
-
-
-
-
+/**
+ * Speaking literally
+ * I basically need to check the current position of the player object and check if the R value is 0
+ * If thats true then atWall will be turned to true
+ * Maybe a switch Case
+ */
 
 
 
