@@ -137,9 +137,9 @@ body {
     width: 1080px;
     height: 720px;
 }
-#mazeImage{
-    height: 720px;
-    width: 1080px;
-    position: absolute;
+#image{
+    border-radius: 5%;
 }
-
+#maze {
+    border-radius: 5%;
+}

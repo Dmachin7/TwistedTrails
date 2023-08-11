@@ -2,33 +2,49 @@
 const startButton = document.querySelector('#startButton')
 const generateMaze = document.querySelector('#generateMaze')
 
-// grab image element
-const mazeImage = document.querySelector('#mazeImage')
+
+  // grab image element
+  const mazeImage = document.querySelector('#image')
+  // grab maze canvas element
+  const maze = document.querySelector('#maze')
+  // canvas getcontext command
+  const pen = maze.getContext('2d')
 
 /**
  * This function is what generates the maze
  */
 const createMaze = () => {
-    const maze = document.querySelector('#maze')
-    const pen = maze.getContext('2d')
 
-    pen.strokeStyle = 'black'
-    pen.lineWidth = 5
-
-    pen.beginPath();
-    pen.moveTo(100, 60);
-    pen.lineTo(950, 60);
-    pen.moveTo(80, 150);
-    pen.lineTo(80, 640);
-    pen.moveTo(80, 640);
-    pen.lineTo(1000, 640);
-    pen.moveTo(1000, 570);
-    pen.lineTo(1000, 80);
-    pen.stroke();
+    // This draws the mazeImage onto the canvas
+    pen.drawImage(image, 0, 0, mazeImage.width, mazeImage.height)
     
+    // This gets the data from the Image to grab its Pixels
+    const imageData = pen.getImageData(0, 0, mazeImage.width, mazeImage.height)
+
+    // used to calculate the pixelSize compared to the canvas and the image size. Which allows the drawing to fit the canvas good
+    const pixelSizeX = Math.floor(maze.width / mazeImage.width);
+    const pixelSizeY = Math.floor(maze.height / mazeImage.height);
+
+    // for loop to iterate over each pixel in the image and grab its RGBA values
+    // the first loop is for each row or vertical pixels
+for (let y = 0; y < mazeImage.height; y++) {
+    // loop to go over every column for pixels
+    for (let x = 0; x < mazeImage.width; x++) {
+        const index = (y * mazeImage.width + x) * 4;
+        const r = imageData.data[index];
+        const g = imageData.data[index + 1];
+        const b = imageData.data[index + 2];
+        const a = imageData.data[index + 3];
+    
+        // sets the "fill style" to match the value grabbed from the for loop above
+        pen.fillStyle = `rgba(${r},${g},${b},${a / 255})`;
+        // this draws a rectangle for each pixel
+        pen.fillRect(x * pixelSizeX, y * pixelSizeY, pixelSizeX, pixelSizeY);
+    }
+    // make the generateMaze button dissapear when clicked
 generateMaze.setAttribute("style","display:none;")
 }
-
+}
 
 generateMaze.addEventListener("click", createMaze)
 
@@ -115,6 +131,4 @@ generateMaze.addEventListener("click", createMaze)
 
 //     console.log(`Player 1's name is ${newPlayer.name}`)
 //     console.log(`Player 2's name is ${player2Name}`)
-
-
-// }
+//}
