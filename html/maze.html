@@ -10,6 +10,11 @@
     <div class="maze-container">
         <button id="generateMaze">Generate Maze</button>
         <a href="instructions.html" id="goBackButton">How-To</a>
+        <div class="message-container">
+            <h2 id="congrats">Congratulations!</h2>
+            <p>You won the game!</p>
+            <button onclick="playGame()" id="play-again-btn">Play Again!</button>
+        </div>
         <img id="image" src="../Images/TinyMaze.png" style="display: none;">
         <canvas id="maze" height="720" width="1090"></canvas>
     </div>

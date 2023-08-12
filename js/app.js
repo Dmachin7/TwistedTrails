@@ -1,6 +1,7 @@
 // grabbing buttons
 const startButton = document.querySelector('#startButton')
 const generateMaze = document.querySelector('#generateMaze')
+const playAgainBtn = document.querySelector('#play-again-btn')
 
 
   // grab image element
@@ -9,6 +10,8 @@ const generateMaze = document.querySelector('#generateMaze')
   const maze = document.querySelector('#maze')
   // canvas getcontext command
   const pen = maze.getContext('2d', {willReadFrequently: true })
+  // grab message container element for later
+  const msgContainer = document.querySelector('.message-container')
 
 /**
  * This function is what generates the maze
@@ -64,8 +67,22 @@ const generatePlayer = () => {
     speed: 10,
     hasKey: false
  }
+const key = {
+    x: 280,
+    y: 250,
+    size: 32
+}
 
- // x: 1040, y: 150 is the winning position
+const keyImage = new Image()
+keyImage.src = '../Images/ashWalking.png'
+
+const drawKey = () => {
+    pen.drawImage(keyImage,key.x, key.y, key.size, key.size)
+}
+keyImage.onload = () => {
+    drawKey()
+}
+// x: 1040, y: 150 is the winning position
 
 
 // 
@@ -110,12 +127,17 @@ playerImage.src = '../Images/ashWalking.png'
         movePlayer(player.speed, 0);
     }
     // Clear the canvas and redraw the maze and player
-    pen.clearRect(0, 0, maze.width, maze.height);
-    createMaze();
-    drawPlayer();
+    pen.clearRect(0, 0, maze.width, maze.height)
+    createMaze()
+    drawPlayer()
+    drawKey()
+    console.log(`player is at x ${player.x} y ${player.y}`)
     
-    if(player.x === 1040 && player.y === 150) {
-        alert("Nice job you won the game!")
+    if(player.x === 1040 && player.y === 150 && player.hasKey === true) {
+        msgContainer.setAttribute("style", "display:block;")
+    } else if (player.x === key.x && player.y === key.y) {
+        player.hasKey = true
+        console.log(`player now hasKey is ${player.hasKey}`)
     }
 })}
 
@@ -123,6 +145,7 @@ playerImage.src = '../Images/ashWalking.png'
 function playGame() {
     createMaze()
     generatePlayer()
+    msgContainer.setAttribute("style", "display:none;")
 }
 
 generateMaze.addEventListener("click", playGame)
