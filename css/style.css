@@ -30,6 +30,8 @@ body {
     align-items: center;
     justify-content: center;
 }
+.grabbed-key p,
+#congrats,
 .message-container p,
 .message-container h2,
 .game-container h2 {
@@ -87,7 +89,12 @@ body {
     border-radius: 5%;
     font-size: 30px;
     position: absolute;
-    left: 42%;
+    left: 43%;
+    top: 43%;
+    background-color: darkgreen;
+}
+#generateMaze:hover {
+    box-shadow: 0 0 10px black;
 }
 #howToButton1 {
     text-decoration: none;
@@ -146,17 +153,19 @@ body {
 #maze {
     border-radius: 5%;
 }
+.grabbed-key,
 .message-container {
     outline: solid 2px black;
-    background-color: rgba(255, 255, 255, .7);
+    background-color: rgba(255, 255, 255, .9);
     padding: 5rem;
     box-shadow: 0 0 10px black;
     border-radius: 5%;
     position: absolute;
     top: 30%;
-    left: 40%;
+    left: 36%;
     display: none;
 }
+#continue-button,
 #play-again-btn {
     text-decoration: none;
     position: relative;
@@ -170,6 +179,19 @@ body {
     font-size: 25px;
     left: 5%;
 }
+#continue-button {
+    position: absolute;
+    left: 35%;
+}
+#continue-button:hover,
 #play-again-btn:hover {
     background-color: darkgreen;
+}
+
+.grabbed-key p {
+    font-size: 20px;
+}
+.message-container {
+    position: absolute;
+    left: 40%;
 }
