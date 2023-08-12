@@ -39,19 +39,16 @@ for (let y = 0; y < mazeImage.height; y++) {
         const b = imageData.data[index + 2]
         const a = imageData.data[index + 3]
 
+
+
         // sets the "fill style" to match the value grabbed from the for loop above
         pen.fillStyle = `rgba(${r},${g},${b},${255})`
         // this draws a rectangle for each pixel
         pen.fillRect(x * pixelSizeX, y * pixelSizeY, pixelSizeX, pixelSizeY)
     }
 
-    /**
- * background-color: rgba(241, 246, 239, 255); //white
-    background-color: rgba(0, 0, 0, 255) //black
- */
-
     // make the generateMaze button dissapear when clicked
-generateMaze.setAttribute("style","display:none;")
+    generateMaze.setAttribute("style","display:none;")
 }
 }
 
@@ -60,6 +57,8 @@ generateMaze.setAttribute("style","display:none;")
  * This function will create the player
  */
 const generatePlayer = () => {
+
+// player object
  const player = {
     x: 0,
     y: 630,
@@ -67,6 +66,8 @@ const generatePlayer = () => {
     speed: 10,
     hasKey: false
  }
+
+// key object
 const key = {
     x: 280,
     y: 250,
@@ -87,26 +88,14 @@ keyImage.onload = () => {
 
 // 
 
-    /**
- * background-color: rgba(241, 246, 239, 255); //white
-    background-color: rgba(0, 0, 0, 255) //black
+ /**
+ * rgba(241, 246, 239, 255); //white
+ * rgba(0, 0, 0, 255) //black
  */
 
 //load the players image
 const playerImage = new Image()
 playerImage.src = '../Images/ashWalking.png'
-
- function movePlayer(dx, dy) {
-    const nextX = player.x + dx
-    const nextY = player.y + dy
-
-    // Check if the next position is within the canvas boundaries
-    if (nextX >= 0 && nextX <= maze.width - player.size &&
-        nextY >= 0 && nextY <= maze.height - player.size) {
-        player.x = nextX
-        player.y = nextY
-    }
- }
 
  function drawPlayer() {
     pen.drawImage(playerImage,player.x, player.y, player.size, player.size)
@@ -114,8 +103,62 @@ playerImage.src = '../Images/ashWalking.png'
  playerImage.onload = () => {
     drawPlayer()
  }
- 
 
+    // used to calculate the pixelSize compared to the canvas and the image size. Which allows the drawing to fit the canvas good
+    const pixelSizeX = Math.floor(maze.width / mazeImage.width)
+    const pixelSizeY = Math.floor(maze.height / mazeImage.height)
+
+    // This draws the mazeImage onto the canvas
+    pen.drawImage(image, 0, 0, mazeImage.width, mazeImage.height)
+    
+    // This gets the data from the Image to grab its Pixels
+    const imageData = pen.getImageData(0, 0, mazeImage.width, mazeImage.height)
+
+
+    let wallCoords = []
+    let pathCoords = []
+ for (let y = 0; y < mazeImage.height; y++) {
+    for (let x = 0; x < mazeImage.width; x++) {
+        const index = (y * mazeImage.width + x) * 4
+        const r = imageData.data[index]
+        const g = imageData.data[index + 1]
+        const b = imageData.data[index + 2]
+        const a = imageData.data[index + 3]
+      
+        if (r === 0) {
+            wallCoords.push(`(${x},${y})`)
+        } else if (r === 241) {
+            pathCoords.push(`(${x},${y})`)
+        }
+
+    }
+ }
+
+ const checkForCollision = (playerX, playerY, playerSize) => {
+    const playerLocation = `(${player.x},${player.y})`
+
+    // if the players location is a wall coordinate then it will return true
+    if(wallCoords.includes(playerLocation)) {
+        console.log("a wall!")
+    }
+    console.log("a path!")
+    console.log(playerLocation)
+ }
+
+ function movePlayer(dx, dy) {
+    const nextX = player.x + dx
+    const nextY = player.y + dy
+
+    // Check if the next position is within the canvas boundaries
+    if (nextX >= 0 && nextX <= maze.width - player.size &&
+        nextY >= 0 && nextY <= maze.height - player.size && !checkForCollision(nextX, nextY, player.size)  ) {
+        player.x = nextX
+        player.y = nextY
+    }
+ }
+ console.log(wallCoords)
+ console.log(pathCoords)
+   // this is what moves the player when using WASD
  document.addEventListener('keydown', (e) => {
     if (e.key === 'w') {
         movePlayer(0, -player.speed);
@@ -126,6 +169,7 @@ playerImage.src = '../Images/ashWalking.png'
     } else if (e.key === 'd' ) {
         movePlayer(player.speed, 0);
     }
+
     // Clear the canvas and redraw the maze and player
     pen.clearRect(0, 0, maze.width, maze.height)
     createMaze()
@@ -141,14 +185,24 @@ playerImage.src = '../Images/ashWalking.png'
     }
 })}
 
-
+/**
+ * This function is what goes through the necessary functions to play the game
+ */
 function playGame() {
     createMaze()
     generatePlayer()
     msgContainer.setAttribute("style", "display:none;")
 }
 
+// event listener on the generate maze button to start the game
 generateMaze.addEventListener("click", playGame)
+
+
+
+
+
+
+
 
 
 /**
