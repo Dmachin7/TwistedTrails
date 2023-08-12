@@ -129,14 +129,14 @@ const drawPlayer = () => {
  
    // this is what moves the player when using WASD
  document.addEventListener('keydown', (e) => {
-    if (e.key === 'w') {
+    if (e.key === 'w' || e.key === 'ArrowUp') {
         movePlayer(0, -player.speed)
-    } else if (e.key === 's') {
+    } else if (e.key === 's' || e.key === 'ArrowDown') {
         movePlayer(0, player.speed)
-    } else if (e.key === 'a') {
+    } else if (e.key === 'a' || e.key === 'ArrowLeft') {
         movePlayer(-player.speed, 0)
-    } else if (e.key === 'd' ) {
-        movePlayer(player.speed, 0)
+    } else if (e.key === 'd'  || e.key === 'ArrowRight') {
+        movePlayer(player.speed, 0);
     }
 
     // Clear the canvas and redraw the maze and player

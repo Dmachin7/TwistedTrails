@@ -1,5 +1,5 @@
 * {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: CustomFont, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 body {
     display: flex;
@@ -10,6 +10,10 @@ body {
     background-image: url(../Images/gif.gif);
     background-size: cover;
 
+}
+@font-face {
+    font-family: CustomFont;
+    src: url(../Font/FORESTANA.ttf);
 }
 .setup-container,
 .game-container,
@@ -46,9 +50,10 @@ body {
 #startButton {
     text-decoration: none;
     position: relative;
-    left: 30%;
-    background-color: darkgreen;
-    color: white;
+    left: 40%;
+    background-color: rgba(255, 255, 255, .7);
+    color: black;
+    font-family: CustomFont;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 30px;
@@ -61,8 +66,9 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: darkgreen;
-    color: white;
+    background-color: rgba(255, 255, 255, .7);
+    color: black;
+    font-family: CustomFont;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 25px;
@@ -86,12 +92,17 @@ body {
     margin: 10px;
 }
 #generateMaze {
-    border-radius: 5%;
-    font-size: 30px;
-    position: absolute;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     left: 43%;
-    top: 43%;
-    background-color: darkgreen;
+    background-color: rgba(255, 255, 255, .5);
+    color: black;
+    font-family: CustomFont;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 30px;
 }
 #generateMaze:hover {
     box-shadow: 0 0 10px black;
@@ -108,14 +119,14 @@ body {
 #howToButton {
     text-decoration: none;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: darkgreen;
-    color: white;
+    left: 40%;
+    background-color: rgba(255, 255, 255, .7);
+    color: black;
+    font-family: CustomFont;
     border-radius: 5px;
     padding: 10px 20px;
-    font-size: 25px;
+    font-size: 35px;
+
 }
 #howToButton:hover {
     box-shadow: 0 0 10px black;
@@ -140,7 +151,7 @@ body {
 .maze-container {
     display: grid;
     outline: solid 2px black;
-    background-color: white;
+    background-color: rgba(255, 255, 255, .7);
     box-shadow: 0 0 10px black;
     border-radius: 5%;
     margin-top: 10px;
@@ -165,6 +176,9 @@ body {
     left: 36%;
     display: none;
 }
+.message-container {
+    left: 41%;
+}
 #continue-button,
 #play-again-btn {
     text-decoration: none;
@@ -172,8 +186,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: gray;
-    color: white;
+    background-color: rgba(255, 255, 255, .7);
+    color: black;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 25px;
@@ -185,13 +199,22 @@ body {
 }
 #continue-button:hover,
 #play-again-btn:hover {
-    background-color: darkgreen;
+    box-shadow: 0 0 10px black;
 }
-
 .grabbed-key p {
     font-size: 20px;
 }
-.message-container {
-    position: absolute;
-    left: 40%;
+.start-game-container h1 {
+    font-family: CustomFont;
+    font-size: 80px;
+    font-weight: 100;
 }
+.game-container li {
+    font-size: 30px;
+    font-family: CustomFont;
+}
+.game-container h1 {
+    font-size: 50px;
+    font-family: CustomFont;
+}
+
