@@ -6,5 +6,9 @@ It was a dark winter night, you and your friend are on your way back home from h
 Next think you know you hear your friend scream and you can't find him !
 Use your keen senses to find your friend and escape the TWISTED TRAILS
 
+# Technologies used
+
+Javascript, CSS, HTML, Netlify, NodeJS
+
 # Live Link to game
 https://twistedtrails.netlify.app/
